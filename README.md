@@ -19,7 +19,7 @@ Ga udah pusing-pusing lagi deh mikirin jual mobil bekas dimana, atau susah-susah
 
 ![Screenshot 2024-11-22 004822](https://github.com/user-attachments/assets/5a1e9ebd-e1b9-4502-8d98-1fadb79a3c19)
 
-2. Melakukan pembelian dengan menghubungi penjual via Whatsapp
+2. Melakukan pembelian dengan menghubungi penjual via WhatsApp
 
 ![Screenshot 2024-11-22 141107](https://github.com/user-attachments/assets/69336ef2-4fc8-4765-9436-48f8bcda9469)
 
