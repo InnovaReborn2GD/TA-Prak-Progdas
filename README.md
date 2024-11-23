@@ -25,9 +25,15 @@ Ga udah pusing-pusing lagi deh mikirin jual mobil bekas dimana, atau susah-susah
 
 ![Screenshot (384)](https://github.com/user-attachments/assets/c8682096-5662-48f3-bea1-e6fba21e88a1)
 
-3. Menambahkan mobil yang ingin dijual
+3. Menambahkan mobil yang ingin dijual (dilengkapi dengan File Chooser untuk menambah foto mobil yang ingin dijual)
 
 ![Screenshot 2024-11-22 011643](https://github.com/user-attachments/assets/74ff6c6c-feaf-4e4f-a17f-cee480f6f59f)
+
+4. Dilengkapi dengan sistem login dan registrasi pengguna
+
+![Screenshot 2024-11-22 003458](https://github.com/user-attachments/assets/e46ecc1b-4b1c-4d4a-af85-cd7ceca36be7)
+
+![Screenshot 2024-11-22 001711](https://github.com/user-attachments/assets/81e8eb4f-9fee-49a4-ad70-6f33b685b881)
 
 ## Cara jalaninnya gimana mint ??
 1. Clone repository ini
