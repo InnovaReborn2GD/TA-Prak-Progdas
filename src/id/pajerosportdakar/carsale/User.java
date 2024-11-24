@@ -33,7 +33,7 @@ class User {
     }  
     
     public static boolean validateNomor(String phone) {
-        String regex = "^81\\d{7,13}$"; // 7 sd 13 digit setelah "81"  
+        String regex = "^8\\d{8,14}$"; // 8 sd 14 digit setelah "8"  
         Pattern pattern = Pattern.compile(regex);  
         Matcher matcher = pattern.matcher(phone);  
         return matcher.matches(); 

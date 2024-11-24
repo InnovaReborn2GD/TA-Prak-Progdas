@@ -272,17 +272,17 @@ public class AddCarFrame extends javax.swing.JFrame {
         panelFormulirLayout.setVerticalGroup(
             panelFormulirLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelFormulirLayout.createSequentialGroup()
-                .addGroup(panelFormulirLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(panelFormulirLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(panelFormulirLayout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(lbMerek)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(tfMerek, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(10, 10, 10)
-                        .addComponent(tfMerek, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(lbModel)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(tfModel, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(tfModel, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(panelFormulirLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(lbTahunModel)
                             .addComponent(lbOdometer))
@@ -442,7 +442,7 @@ public class AddCarFrame extends javax.swing.JFrame {
         
         int a = JOptionPane.showConfirmDialog(this, "Apakah anda yakin ingin menanbahkan mobil ini?\nSetelah anda klik Yes, anda tidak dapat mengubahnya kembali!", "Konfirmasi Penambahan", JOptionPane.YES_NO_OPTION, JOptionPane.WARNING_MESSAGE);
         if (a == JOptionPane.YES_OPTION) {
-            if (merek.isEmpty() || model.isEmpty() || tahun.isEmpty() || harga.isEmpty() || kubikasi.isEmpty() || warna.isEmpty() || lokasi.isEmpty() || nomorPenjual.isEmpty() || namaPenjual.isEmpty() || deskripsi.isEmpty() || imagePath.matches("-")) {
+            if (merek.isEmpty() || model.isEmpty() || tahun.isEmpty() || harga.isEmpty() || kubikasi.isEmpty() || warna.isEmpty() || lokasi.isEmpty() || nomorPenjual.isEmpty() || namaPenjual.isEmpty() || deskripsi.isEmpty() || imagePath.equals("-")) {
                 JOptionPane.showMessageDialog(this, "Tidak dapat menambahkan mobil. \nData kosong atau tidak sah. Mohon periksa kembali data yang anda masukkan.", "Galat", JOptionPane.ERROR_MESSAGE);
             return;
             }      
@@ -481,8 +481,8 @@ public class AddCarFrame extends javax.swing.JFrame {
         // TODO add your handling code here:
         JFileChooser fileChooser = new JFileChooser();
         fileChooser.setDialogTitle("Pilih Gambar");
-        fileChooser.setCurrentDirectory(new File("C:\\Users\\DarkLighs\\Pictures"));
-        FileNameExtensionFilter filter = new FileNameExtensionFilter("image", ".png",".jpg", ".jpeg", ".webp");
+        fileChooser.setCurrentDirectory(new File("C:\\Users\\DarkLighs\\Documents\\Folder Dok Kuliah\\Praktikum progdas\\kodingan\\TA Prak Progdas\\images"));
+        FileNameExtensionFilter filter = new FileNameExtensionFilter("Gambar", "png","jpg", "jpeg", "webp");
         fileChooser.addChoosableFileFilter(filter);
         int result = fileChooser.showOpenDialog(this);
         if(result == JFileChooser.APPROVE_OPTION) {
@@ -507,9 +507,17 @@ public class AddCarFrame extends javax.swing.JFrame {
 
     private void tbRemovePictActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tbRemovePictActionPerformed
         // TODO add your handling code here:
+        String imagePath = tfImagePath.getText();
+        
+        if (imagePath.equals("-")) {
+            JOptionPane.showMessageDialog(this, "Tidak ada gambar yang ditampilkan", "Info", JOptionPane.INFORMATION_MESSAGE);
+        } 
+        
+        else {
         lbImage.setIcon(null); // Menghapus gambar dari JLabel  
         tfImagePath.setText("-");
-        JOptionPane.showMessageDialog(this, "Gambar dihapus.", "Form", JOptionPane.INFORMATION_MESSAGE); // Menampilkan pesan ke pengguna   
+        JOptionPane.showMessageDialog(this, "Gambar dihapus.", "Info", JOptionPane.INFORMATION_MESSAGE);
+        }
     }//GEN-LAST:event_tbRemovePictActionPerformed
 
     private void tfNoTelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tfNoTelActionPerformed

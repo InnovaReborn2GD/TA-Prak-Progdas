@@ -1,8 +1,8 @@
 package id.pajerosportdakar.carsale;
+import com.formdev.flatlaf.themes.*;
 import java.io.*;
 import javax.swing.*;  
 import java.util.ArrayList;  
-import java.util.logging.*;
 
 public class Main {  
     public static ArrayList<User> userList = new ArrayList<>();
@@ -10,19 +10,7 @@ public class Main {
     
     public static void main(String[] args) {  
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-        * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html
-        */
-        try { javax.swing.UIManager.setLookAndFeel("com.sun.java.swing.plaf.windows.WindowsLookAndFeel");
-        } catch (ClassNotFoundException ex) {
-            Logger.getLogger(MainFrame.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            Logger.getLogger(MainFrame.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            Logger.getLogger(MainFrame.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (UnsupportedLookAndFeelException ex) {
-            Logger.getLogger(MainFrame.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        FlatMacDarkLaf.setup();
         //</editor-fold> 
         loadData();
         java.awt.EventQueue.invokeLater(new Runnable() {

@@ -1,6 +1,6 @@
 package id.pajerosportdakar.carsale;
 import java.util.ArrayList;
-import javax.swing.JOptionPane;
+import javax.swing.*;
 
 public class LoginFrame extends javax.swing.JFrame {
     
@@ -139,10 +139,10 @@ public class LoginFrame extends javax.swing.JFrame {
 
     private void chbShowPassActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chbShowPassActionPerformed
         // TODO add your handling code here:
-        if (chbShowPass.isSelected()) {
-            pfPassword.setEchoChar((char)0);
+        if ( pfPassword.getEchoChar() != '\u0000' ) {
+            pfPassword.setEchoChar('\u0000');
         } else {
-            pfPassword.setEchoChar('*');
+            pfPassword.setEchoChar((Character) UIManager.get("PasswordField.echoChar"));
         }
     }//GEN-LAST:event_chbShowPassActionPerformed
 

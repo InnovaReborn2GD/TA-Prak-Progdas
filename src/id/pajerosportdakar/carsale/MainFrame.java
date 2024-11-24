@@ -164,10 +164,7 @@ public class MainFrame extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void tbTambahMobilActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tbTambahMobilActionPerformed
-        AddCarFrame carf = new AddCarFrame(Main.carList, username);
-        carf.setVisible(true);
-        carf.pack();
-        carf.setDefaultCloseOperation(EXIT_ON_CLOSE);
+        new AddCarFrame(Main.carList, username).setVisible(true);
         this.dispose();
     }//GEN-LAST:event_tbTambahMobilActionPerformed
 

@@ -71,19 +71,22 @@ public class RegistrationFrame extends JFrame {
             }
         });
 
-        jLabel1.setText("Format: 81xxxxx (max 15 digit)");
+        jLabel1.setText("Format: 8xxxxxx (max 15 digit)");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(0, 437, Short.MAX_VALUE)
+                .addComponent(tbLogin)
+                .addGap(43, 43, 43))
             .addGroup(layout.createSequentialGroup()
+                .addGap(120, 120, 120)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(lbHeader, javax.swing.GroupLayout.PREFERRED_SIZE, 352, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(86, 86, 86)
-                        .addComponent(lbHeader, javax.swing.GroupLayout.PREFERRED_SIZE, 352, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(100, 100, 100)
+                        .addGap(14, 14, 14)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(lbUsername, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(lbNomorTel, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -91,25 +94,21 @@ public class RegistrationFrame extends JFrame {
                                 .addGap(6, 6, 6)
                                 .addComponent(lbKodeTel, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(tfNomorTel))
-                            .addComponent(tfUsername)
+                                .addComponent(tfNomorTel, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(tfUsername, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(tbRegister)
-                            .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addComponent(jLabel1))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(chbShowPass)
                             .addComponent(pfPass, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(lbPass))))
-                .addContainerGap(162, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(tbLogin)
-                .addGap(43, 43, 43))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(63, 63, 63)
+                .addContainerGap(97, Short.MAX_VALUE)
                 .addComponent(lbHeader)
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
@@ -132,7 +131,7 @@ public class RegistrationFrame extends JFrame {
                         .addComponent(jLabel1)))
                 .addGap(28, 28, 28)
                 .addComponent(tbRegister)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 93, Short.MAX_VALUE)
+                .addGap(59, 59, 59)
                 .addComponent(tbLogin)
                 .addGap(28, 28, 28))
         );
@@ -156,10 +155,10 @@ public class RegistrationFrame extends JFrame {
 
     private void chbShowPassActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chbShowPassActionPerformed
         // TODO add your handling code here:
-        if (chbShowPass.isSelected()) {
-            pfPass.setEchoChar((char)0);
+        if ( pfPass.getEchoChar() != '\u0000' ) {
+            pfPass.setEchoChar('\u0000');
         } else {
-            pfPass.setEchoChar('*');
+            pfPass.setEchoChar((Character) UIManager.get("PasswordField.echoChar"));
         }
     }//GEN-LAST:event_chbShowPassActionPerformed
     
