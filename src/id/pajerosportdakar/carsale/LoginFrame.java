@@ -154,7 +154,7 @@ public class LoginFrame extends javax.swing.JFrame {
             if (user.getUsername().equals(username) && user.getPassword().equals(password)) {   
                 new MainFrame(username, Main.carList).setVisible(true);
                 this.dispose();
-                break;  
+                return;  
             }  
         }  
         JOptionPane.showMessageDialog(this, "Gagal Masuk. \nNama pengguna atau kata sandi tidak sah.", "Galat", JOptionPane.ERROR_MESSAGE);  
