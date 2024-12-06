@@ -315,26 +315,26 @@ public class CarDetailsFrame extends javax.swing.JFrame {
 
     private void tbBeliActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tbBeliActionPerformed
         // TODO add your handling code here:
-        Object[] options = {"Hubungi","Batal"};
+        Object[] options = {"Hubungi", "Batal"}; // array utk custom button text
         int a = JOptionPane.showOptionDialog(this, "Untuk membeli mobil ini, kamu bisa menghubungi penjual." + "\nNomor Penjual: +62" + car.getNomorPenjual() + "\nKamu akan dialihkan ke halaman web baru (WhatsApp)", 
                 "Beli Mobil", 
                 JOptionPane.YES_NO_OPTION, 
                 JOptionPane.QUESTION_MESSAGE, 
                 null, 
-                options, 
-                options[0]);
+                options, // custom option button text
+                options[0]); // atur pilihan default ke 0 (pilihan ya/hubungi)
         if (a == 0) {
-            openWebPage("https://wa.me/62" + car.getNomorPenjual());
+            openWebPage("https://wa.me/62" + car.getNomorPenjual()); // buka wa sesuai nomor penjual (misal: wa.me/62 + 811xxx)
         }
     }//GEN-LAST:event_tbBeliActionPerformed
     
     private void openWebPage(String urlString) {  
         try { 
             URI uri = new URI(urlString);  
-            Desktop.getDesktop().browse(uri); // Membuka URL di browser default  
+            Desktop.getDesktop().browse(uri); // buka url di browser 
         } catch (Exception e) {  
-            e.printStackTrace(); // Menangani kesalahan, misalnya, URL tidak valid  
-            JOptionPane.showMessageDialog(this, "Terjadi kesalahan saat membuka halaman web.", "Galat", JOptionPane.ERROR_MESSAGE);  
+            e.printStackTrace();
+            JOptionPane.showMessageDialog(this, "Tidak dapat membuka halaman web.\n" + e.getMessage(), "Galat", JOptionPane.ERROR_MESSAGE);  
         }  
     }  
 

@@ -4,11 +4,6 @@ import javax.swing.*;
 
 public class LoginFrame extends javax.swing.JFrame {
     
-    /**
-     * Creates new form LoginFrame
-     * @param userList
-     */
-    
     public LoginFrame(ArrayList<User> userList) {
         this.userList = userList;
         initComponents();
@@ -139,7 +134,7 @@ public class LoginFrame extends javax.swing.JFrame {
 
     private void chbShowPassActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chbShowPassActionPerformed
         // TODO add your handling code here:
-        if ( pfPassword.getEchoChar() != '\u0000' ) {
+        if (pfPassword.getEchoChar() != '\u0000') {
             pfPassword.setEchoChar('\u0000');
         } else {
             pfPassword.setEchoChar((Character) UIManager.get("PasswordField.echoChar"));
@@ -153,12 +148,13 @@ public class LoginFrame extends javax.swing.JFrame {
     private void loginUser() {  
         String username = tfUsername.getText();  
         String password = new String(pfPassword.getPassword());  
-
+        
+        // memeriksa apakah user dan password benar
         for (User user : userList) {  
             if (user.getUsername().equals(username) && user.getPassword().equals(password)) {   
                 new MainFrame(username, Main.carList).setVisible(true);
                 this.dispose();
-                return;  
+                break;  
             }  
         }  
         JOptionPane.showMessageDialog(this, "Gagal Masuk. \nNama pengguna atau kata sandi tidak sah.", "Galat", JOptionPane.ERROR_MESSAGE);  
@@ -174,5 +170,5 @@ public class LoginFrame extends javax.swing.JFrame {
     private javax.swing.JButton tbLogin;
     private javax.swing.JTextField tfUsername;
     // End of variables declaration//GEN-END:variables
-    private ArrayList<User> userList;
+    private final ArrayList<User> userList;
 }

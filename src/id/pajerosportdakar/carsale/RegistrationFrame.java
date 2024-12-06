@@ -4,11 +4,6 @@ import java.util.ArrayList;
 
 public class RegistrationFrame extends JFrame {
     
-    /**
-     * Creates new form RegistrationFrame
-     * @param userList
-     */
-    
     public RegistrationFrame(ArrayList<User> userList) {
         this.userList = userList;
         initComponents();
@@ -35,6 +30,8 @@ public class RegistrationFrame extends JFrame {
         tbLogin = new javax.swing.JButton();
         chbShowPass = new javax.swing.JCheckBox();
         jLabel1 = new javax.swing.JLabel();
+        pfConfirmPass = new javax.swing.JPasswordField();
+        lbConfirmPass = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Registrasi");
@@ -73,6 +70,8 @@ public class RegistrationFrame extends JFrame {
 
         jLabel1.setText("Format: 8xxxxxx (max 15 digit)");
 
+        lbConfirmPass.setText("Konfirmasi Kata Sandi");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -83,10 +82,9 @@ public class RegistrationFrame extends JFrame {
                 .addGap(43, 43, 43))
             .addGroup(layout.createSequentialGroup()
                 .addGap(120, 120, 120)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(lbHeader, javax.swing.GroupLayout.PREFERRED_SIZE, 352, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(14, 14, 14)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(lbUsername, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(lbNomorTel, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -98,38 +96,45 @@ public class RegistrationFrame extends JFrame {
                             .addComponent(tfUsername, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(tbRegister)
                             .addComponent(jLabel1))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGap(27, 27, 27)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(chbShowPass)
                             .addComponent(pfPass, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(lbPass))))
+                            .addComponent(lbPass)
+                            .addComponent(pfConfirmPass, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lbConfirmPass))))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap(97, Short.MAX_VALUE)
+                .addContainerGap(95, Short.MAX_VALUE)
                 .addComponent(lbHeader)
                 .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(lbUsername)
-                    .addComponent(lbPass, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(lbPass, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(tfUsername, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(pfPass, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(pfPass, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(tfUsername, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(chbShowPass)
-                    .addGroup(layout.createSequentialGroup()
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addComponent(lbNomorTel)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(tfNomorTel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(lbKodeTel))
+                            .addComponent(lbKodeTel)))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(lbConfirmPass, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel1)))
-                .addGap(28, 28, 28)
+                        .addComponent(pfConfirmPass, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel1)
+                    .addComponent(chbShowPass))
+                .addGap(26, 26, 26)
                 .addComponent(tbRegister)
                 .addGap(59, 59, 59)
                 .addComponent(tbLogin)
@@ -146,7 +151,7 @@ public class RegistrationFrame extends JFrame {
 
     private void tbLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tbLoginActionPerformed
         // TODO add your handling code here:
-        int a = JOptionPane.showConfirmDialog(this, "Apakah kamu yakin ingin batal pendaftaran?\n Data yang kamu masukkan bakal ilang!", "Registrasi", JOptionPane.YES_NO_OPTION, JOptionPane.WARNING_MESSAGE);
+        int a = JOptionPane.showConfirmDialog(this, "Apakah kamu yakin ingin batal pendaftaran?\nData yang kamu masukkan bakal ilang!", "Registrasi", JOptionPane.YES_NO_OPTION, JOptionPane.WARNING_MESSAGE);
         if (a == JOptionPane.YES_OPTION) {
             new LoginFrame(userList).setVisible(true);
             this.dispose();
@@ -155,59 +160,72 @@ public class RegistrationFrame extends JFrame {
 
     private void chbShowPassActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chbShowPassActionPerformed
         // TODO add your handling code here:
-        if ( pfPass.getEchoChar() != '\u0000' ) {
+        if (chbShowPass.isSelected()) {
             pfPass.setEchoChar('\u0000');
+            pfConfirmPass.setEchoChar('\u0000'); // menampilkan password
         } else {
-            pfPass.setEchoChar((Character) UIManager.get("PasswordField.echoChar"));
+            pfPass.setEchoChar((Character) UIManager.get("PasswordField.echoChar")); // atur pf menjadi ....
+            pfConfirmPass.setEchoChar((Character) UIManager.get("PasswordField.echoChar"));
         }
     }//GEN-LAST:event_chbShowPassActionPerformed
     
     private void registerUser() {  
         String username = tfUsername.getText();  
         String password = new String(pfPass.getPassword());  
-        String confirmPassword = new String(pfPass.getPassword());  
+        String confirmPassword = new String(pfConfirmPass.getPassword());  
         String phone = tfNomorTel.getText();  
         
         if (username.isEmpty() || password.isEmpty() || confirmPassword.isEmpty() || phone.isEmpty()) {
             JOptionPane.showMessageDialog(this, "Registrasi Gagal. \nData kosong atau tidak sah. Mohon periksa kembali data yang anda masukkan.", "Galat", JOptionPane.ERROR_MESSAGE);
             return;
         }
-
+        
         if (!password.equals(confirmPassword)) {  
-            JOptionPane.showMessageDialog(this, "Registrasi Gagal! \nKata sandi tidak cocok", "Galat", JOptionPane.ERROR_MESSAGE);  
+            JOptionPane.showMessageDialog(this, "Registrasi Gagal! \nKata sandi tidak cocok.", "Galat", JOptionPane.ERROR_MESSAGE);  
             return;  
         } 
         
         if (!User.validatePwd(password)) {  
-            JOptionPane.showMessageDialog(this, "Registrasi Gagal! \nKata sandi harus mengandung masing-masing setidaknya satu huruf kecil, huruf besar, angka, dan simbol.", "Galat", JOptionPane.ERROR_MESSAGE);  
+            JOptionPane.showMessageDialog(this, """
+                                                Registrasi Gagal! 
+                                                Kata sandi harus terdiri dari 8-20 karakter, mengandung masing-masing 
+                                                setidaknya satu huruf kecil, huruf besar, angka, dan simbol.""",
+                                                "Galat",
+                                                JOptionPane.ERROR_MESSAGE);  
             return;  
         }  
-        
+
         if (!User.validateNomor(phone)) {
-            JOptionPane.showMessageDialog(this, "Registrasi Gagal! \nNomor telepon harus berupa angka, terdiri dari setidaknya 6-15 digit, dan berawalan '81'." , "Galat", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(this, """
+                                                Registrasi Gagal! 
+                                                Nomor telepon harus berupa angka, terdiri dari setidaknya 6-15 digit, dan berawalan '8'.""", 
+                                                "Galat", 
+                                                JOptionPane.ERROR_MESSAGE);
             return;
         } 
-
+        
         userList.add(new User(username, password, phone));  
         Main.saveData();
         JOptionPane.showMessageDialog(this, "Registrasi Sukses", "Registrasi", JOptionPane.INFORMATION_MESSAGE);  
         new LoginFrame(userList).setVisible(true);
-        this.dispose(); // tutup jendela
+        this.dispose();
     }  
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JCheckBox chbShowPass;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel lbConfirmPass;
     private javax.swing.JLabel lbHeader;
     private javax.swing.JLabel lbKodeTel;
     private javax.swing.JLabel lbNomorTel;
     private javax.swing.JLabel lbPass;
     private javax.swing.JLabel lbUsername;
+    private javax.swing.JPasswordField pfConfirmPass;
     private javax.swing.JPasswordField pfPass;
     private javax.swing.JButton tbLogin;
     private javax.swing.JButton tbRegister;
     private javax.swing.JTextField tfNomorTel;
     private javax.swing.JTextField tfUsername;
     // End of variables declaration//GEN-END:variables
-    private ArrayList<User> userList;
+    private final ArrayList<User> userList;
 }    

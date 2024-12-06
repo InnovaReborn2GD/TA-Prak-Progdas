@@ -7,9 +7,6 @@ import javax.swing.filechooser.FileNameExtensionFilter;
 
 public class AddCarFrame extends javax.swing.JFrame {
 
-    /**
-     * Creates new form AddCarFrame
-     */
     public AddCarFrame(ArrayList<Car> carList, String username) {
         this.carList = carList;
         this.username = username;
@@ -425,35 +422,7 @@ public class AddCarFrame extends javax.swing.JFrame {
 
     private void tbTambahMblActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tbTambahMblActionPerformed
         // TODO add your handling code here:
-        String merek = tfMerek.getText();  
-        String model = tfModel.getText();  
-        String tahun = tfTahunModel.getText();  
-        String harga = tfHarga.getText();  
-        String odometer = (String) cbOdometer.getSelectedItem();
-        String jenisBBM = (String) cbJenisBBM.getSelectedItem();
-        String jenisGearbox = (String) cbTransmisi.getSelectedItem();
-        String kubikasi = tfKubikasi.getText();
-        String warna = tfWarna.getText();
-        String lokasi = tfLokasi.getText();
-        String nomorPenjual = tfNoTel.getText();
-        String namaPenjual = username;
-        String deskripsi = taDeskripsi.getText();
-        String imagePath = tfImagePath.getText();
-        
-        int a = JOptionPane.showConfirmDialog(this, "Apakah anda yakin ingin menanbahkan mobil ini?\nSetelah anda klik Yes, anda tidak dapat mengubahnya kembali!", "Konfirmasi Penambahan", JOptionPane.YES_NO_OPTION, JOptionPane.WARNING_MESSAGE);
-        if (a == JOptionPane.YES_OPTION) {
-            if (merek.isEmpty() || model.isEmpty() || tahun.isEmpty() || harga.isEmpty() || kubikasi.isEmpty() || warna.isEmpty() || lokasi.isEmpty() || nomorPenjual.isEmpty() || namaPenjual.isEmpty() || deskripsi.isEmpty() || imagePath.equals("-")) {
-                JOptionPane.showMessageDialog(this, "Tidak dapat menambahkan mobil. \nData kosong atau tidak sah. Mohon periksa kembali data yang anda masukkan.", "Galat", JOptionPane.ERROR_MESSAGE);
-            return;
-            }      
-            
-            Car newCar = new Car(merek, model, tahun, harga, deskripsi, odometer, jenisBBM, jenisGearbox, kubikasi, warna, lokasi, nomorPenjual, namaPenjual, imagePath);
-            carList.add(newCar);
-            JOptionPane.showMessageDialog(this, "Mobil berhasil ditambahkan", "Tambah Mobil", JOptionPane.INFORMATION_MESSAGE);
-            Main.saveCarData();
-            new MainFrame(username, Main.carList).setVisible(true);
-            this.dispose();
-        }
+        registerCar();
     }//GEN-LAST:event_tbTambahMblActionPerformed
         
     private void cbOdometerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbOdometerActionPerformed
@@ -479,21 +448,24 @@ public class AddCarFrame extends javax.swing.JFrame {
 
     private void tbAddPictActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tbAddPictActionPerformed
         // TODO add your handling code here:
-        JFileChooser fileChooser = new JFileChooser();
+        JFileChooser fileChooser = new JFileChooser(); // buat filechooser baru utk menambahkan gambar
         fileChooser.setDialogTitle("Pilih Gambar");
-        fileChooser.setCurrentDirectory(new File("C:\\Users\\DarkLighs\\Documents\\Folder Dok Kuliah\\Praktikum progdas\\kodingan\\TA Prak Progdas\\images"));
-        FileNameExtensionFilter filter = new FileNameExtensionFilter("Gambar", "png","jpg", "jpeg", "webp");
+        
+        fileChooser.setCurrentDirectory(new File("images/")); // atur direktori default ke folder images pada project
+        FileNameExtensionFilter filter = new FileNameExtensionFilter("Gambar (*.png; *.jpg; *.jpeg)", "png", "jpg", "jpeg");
         fileChooser.addChoosableFileFilter(filter);
+        fileChooser.setFileFilter(filter); // atur filter file
+        
         int result = fileChooser.showOpenDialog(this);
-        if(result == JFileChooser.APPROVE_OPTION) {
-            String imagePath = fileChooser.getSelectedFile().getAbsolutePath();
+        if (result == JFileChooser.APPROVE_OPTION) {
+            String imagePath = fileChooser.getSelectedFile().getAbsolutePath(); // mendapatkan file gambar beserta lokasi/path nya
             tfImagePath.setText(imagePath);
             System.out.println("Gambar berhasil ditambahkan! \nJalur: " + imagePath);
             
             lbImage.setText("");
             ImageIcon imageIco = new ImageIcon(imagePath);
             Image image = imageIco.getImage().getScaledInstance(370, 260, Image.SCALE_SMOOTH);
-            lbImage.setIcon(new ImageIcon(image));
+            lbImage.setIcon(new ImageIcon(image)); // tampilkan gambar
         }
     }//GEN-LAST:event_tbAddPictActionPerformed
     
@@ -508,15 +480,12 @@ public class AddCarFrame extends javax.swing.JFrame {
     private void tbRemovePictActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tbRemovePictActionPerformed
         // TODO add your handling code here:
         String imagePath = tfImagePath.getText();
-        
-        if (imagePath.equals("-")) {
-            JOptionPane.showMessageDialog(this, "Tidak ada gambar yang ditampilkan", "Info", JOptionPane.INFORMATION_MESSAGE);
-        } 
-        
-        else {
-        lbImage.setIcon(null); // Menghapus gambar dari JLabel  
-        tfImagePath.setText("-");
-        JOptionPane.showMessageDialog(this, "Gambar dihapus.", "Info", JOptionPane.INFORMATION_MESSAGE);
+        if (lbImage == null || imagePath.equals("-")) {
+            JOptionPane.showMessageDialog(this, "Tidak ada gambar yang ditampilkan.", "Info", JOptionPane.INFORMATION_MESSAGE);
+        } else {
+            lbImage.setIcon(null); // Menghapus gambar dari JLabel
+            tfImagePath.setText("-");
+            JOptionPane.showMessageDialog(this, "Gambar dihapus.", "Info", JOptionPane.INFORMATION_MESSAGE);
         }
     }//GEN-LAST:event_tbRemovePictActionPerformed
 
@@ -527,10 +496,10 @@ public class AddCarFrame extends javax.swing.JFrame {
     private void chbUseCurrentTelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chbUseCurrentTelActionPerformed
         // TODO add your handling code here:
         if (!chbUseCurrentTel.isSelected()) {
-            tfNoTel.setEditable(true);
+            tfNoTel.setEditable(true); // atur agar text field nomor bisa diedit
         } else {
             tfNoTel.setEditable(false);
-            tfNoTel.setText(getNomorPenjual(username));
+            tfNoTel.setText(getNomorPenjual(username)); // autofill nomor penjual sesuai nomor user yang login
         }
     }//GEN-LAST:event_chbUseCurrentTelActionPerformed
 
@@ -538,10 +507,49 @@ public class AddCarFrame extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_cbTransmisiActionPerformed
     
+    private void registerCar() {
+        // deklarasi variabel data mobil yang didapatkan dari pengisian
+        String merek = tfMerek.getText();  
+        String model = tfModel.getText();  
+        String tahun = tfTahunModel.getText();  
+        String harga = tfHarga.getText();  
+        String odometer = (String) cbOdometer.getSelectedItem();
+        String jenisBBM = (String) cbJenisBBM.getSelectedItem();
+        String jenisGearbox = (String) cbTransmisi.getSelectedItem();
+        String kubikasi = tfKubikasi.getText();
+        String warna = tfWarna.getText();
+        String lokasi = tfLokasi.getText();
+        String nomorPenjual = tfNoTel.getText();
+        String namaPenjual = username;
+        String deskripsi = taDeskripsi.getText();
+        String imagePath = tfImagePath.getText();
+        
+        int a = JOptionPane.showConfirmDialog(this, "Apakah anda yakin ingin menanbahkan mobil ini?\nSetelah anda klik Yes, anda tidak dapat mengubahnya kembali!", "Konfirmasi Penambahan", JOptionPane.YES_NO_OPTION, JOptionPane.WARNING_MESSAGE);
+        if (a == JOptionPane.YES_OPTION) { // jika pengguna memilih pilihan ya
+            if (merek.isEmpty() || model.isEmpty() || tahun.isEmpty() || harga.isEmpty() || kubikasi.isEmpty() || warna.isEmpty() || lokasi.isEmpty() || nomorPenjual.isEmpty() || namaPenjual.isEmpty() || deskripsi.isEmpty() || imagePath.equals("-")) {
+                JOptionPane.showMessageDialog(this, "Tidak dapat menambahkan mobil. \nData kosong atau tidak sah. Mohon periksa kembali data yang anda masukkan.", "Galat", JOptionPane.ERROR_MESSAGE);
+                return;
+            }
+            
+            if (!User.validateNomor(nomorPenjual)) {
+                JOptionPane.showMessageDialog(this, "Nomor telepon tidak sah. \nNomor telepon harus berupa angka, terdiri dari setidaknya 6-15 digit, dan berawalan '8'." , "Galat", JOptionPane.ERROR_MESSAGE);
+                return;
+            }
+            
+            Car newCar = new Car(merek, model, tahun, harga, deskripsi, odometer, jenisBBM, jenisGearbox, kubikasi, warna, lokasi, nomorPenjual, namaPenjual, imagePath);
+            carList.add(newCar); // menambahkan data mobil baru ke ArrayList carList
+            JOptionPane.showMessageDialog(this, "Mobil berhasil ditambahkan", "Tambah Mobil", JOptionPane.INFORMATION_MESSAGE);
+            Main.saveCarData(); // menyimpan data mobil ke file carDb.txt
+            new MainFrame(username, Main.carList).setVisible(true);
+            this.dispose();
+        }
+    }
+
+    // fungsi getter nomor sesuai user yang sedang login
     private String getNomorPenjual(String username) {  
         for (User user : Main.userList) {  
             if (user.getUsername().equals(username)) {  
-                return user.getPhone();  
+                return user.getPhone();
             }  
         }  
         return "";  
@@ -590,7 +598,6 @@ public class AddCarFrame extends javax.swing.JFrame {
     private javax.swing.JTextField tfTahunModel;
     private javax.swing.JTextField tfWarna;
     // End of variables declaration//GEN-END:variables
-    ArrayList<Car> carList;
-    String username;
-    
+    private final ArrayList<Car> carList;
+    private final String username;
 }

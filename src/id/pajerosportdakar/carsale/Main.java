@@ -1,5 +1,6 @@
 package id.pajerosportdakar.carsale;
-import com.formdev.flatlaf.themes.*;
+import com.formdev.flatlaf.FlatLaf;
+import com.formdev.flatlaf.themes.FlatMacDarkLaf;
 import java.io.*;
 import javax.swing.*;  
 import java.util.ArrayList;  
@@ -10,7 +11,12 @@ public class Main {
     
     public static void main(String[] args) {  
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        FlatMacDarkLaf.setup();
+        try {  
+            FlatLaf.setup(new FlatMacDarkLaf());   
+            System.out.println("FlatLaf Look and Feel set successfully!");  
+        } catch (Exception e) {  
+            e.printStackTrace();  
+        }  
         //</editor-fold> 
         loadData();
         java.awt.EventQueue.invokeLater(new Runnable() {
@@ -32,20 +38,21 @@ public class Main {
         saveCarData();
     }
     
-    // simpan data pengguna ke usersDB.txt
+    // simpan data pengguna ke usersDb.txt
     public static void saveUserData() {  
         try (BufferedWriter writer = new BufferedWriter(new FileWriter("usersDb.txt"))) {  
             for (User user : userList) {  
                 writer.write(user.getUsername() + "," + user.getPassword() + "," + user.getPhone());  
                 writer.newLine();  
             }  
-            System.out.println ("Simpan data pengguna Sukses.");  
+            System.out.println ("Simpan data pengguna sukses.");  
         } catch (IOException e) {  
             System.out.println("Gagal menyimpan data pengguna: " +e.getMessage());
             JOptionPane.showMessageDialog(null, "Gagal menyimpan data pengguna: " + e.getMessage(), "Galat", JOptionPane.ERROR_MESSAGE);  
         }  
     }   
-    // muat data pengguna dari usersDB.txt
+    
+    // muat data pengguna dari usersDb.txt
     public static void loadUserData() {  
         try (BufferedReader reader = new BufferedReader(new FileReader("usersDb.txt"))) {  
             String line;  
@@ -64,7 +71,24 @@ public class Main {
             JOptionPane.showMessageDialog(null, "Gagal memuat database pengguna: " + e.getMessage(), "Galat", JOptionPane.ERROR_MESSAGE);  
         }  
     }
-    // muat data mobil dari carDB.txt
+    
+    // simpan data mobil ke carDb.txt
+    public static void saveCarData() {  
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter("carDb.txt"))) {  
+            for (Car car : carList) {  
+                writer.write(car.getMerek() + ";" + car.getModel() + ";" + car.getTahun() + ";" + car.getHarga() + ";" + 
+                        car.getDeskripsi() + ";" + car.getOdometer() + ";" + car.getJenisBBM() + ";" + car.getJenisGearbox() + ";" + 
+                        car.getKubikasi() + ";" + car.getWarna() + ";" + car.getLokasi() + ";" + car.getNomorPenjual() + ";" + 
+                        car.getNamaPenjual() + ";" + car.getImagePath());  
+                writer.newLine(); 
+            }  
+            System.out.println("Simpan data mobil sukses");  
+        } catch (IOException e) {  
+            JOptionPane.showMessageDialog(null, "Gagal menyimpan data mobil: " + e.getMessage(), "Galat", JOptionPane.ERROR_MESSAGE);  
+        }  
+    } 
+    
+    // muat data mobil dari carDb.txt
     public static void loadCarData() {  
         try (BufferedReader reader = new BufferedReader(new FileReader("carDb.txt"))) {  
             String line;  
@@ -93,20 +117,5 @@ public class Main {
             System.out.println("Gagal memuat database mobil" + e.getMessage());
             JOptionPane.showMessageDialog(null, "Gagal memuat database mobil: " + e.getMessage(), "Galat", JOptionPane.ERROR_MESSAGE);  
         }  
-    }  
-    // menyimpan data mobil ke dalam carDB.txt
-    public static void saveCarData() {  
-        try (BufferedWriter writer = new BufferedWriter(new FileWriter("carDb.txt"))) {  
-            for (Car car : carList) {  
-                writer.write(car.getMerek() + ";" + car.getModel() + ";" + car.getTahun() + ";" + car.getHarga() + ";" + 
-                        car.getDeskripsi() + ";" + car.getOdometer() + ";" + car.getJenisBBM() + ";" + car.getJenisGearbox() + ";" + 
-                        car.getKubikasi() + ";" + car.getWarna() + ";" + car.getLokasi() + ";" + car.getNomorPenjual() + ";" + 
-                        car.getNamaPenjual() + ";" + car.getImagePath());  
-                writer.newLine(); 
-            }  
-            System.out.println("Simpan data mobil sukses");  
-        } catch (IOException e) {  
-            JOptionPane.showMessageDialog(null, "Gagal menyimpan data mobil: " + e.getMessage(), "Galat", JOptionPane.ERROR_MESSAGE);  
-        }  
-    }        
+    }         
 }

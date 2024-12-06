@@ -1,5 +1,6 @@
 package id.pajerosportdakar.carsale;
 
+// kelas dan konstruktor mobil
 public class Car {
     private String merek;  
     private String model;  
@@ -33,7 +34,7 @@ public class Car {
         this.imagePath = imagePath;
     }  
 
-    // Getter methods  
+    // metode getter utk masing masing atribut data mobil  
     public String getMerek() {  
         return merek;  
     }  
@@ -89,10 +90,5 @@ public class Car {
     public String getImagePath() {
         return imagePath;
     }
-    
-    @Override  
-    public String toString() {  
-        return merek + " " + model + " (" + tahun + ")";  
-    }  
 } 
 

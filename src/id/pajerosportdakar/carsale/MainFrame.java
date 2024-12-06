@@ -1,15 +1,11 @@
 package id.pajerosportdakar.carsale;
-
 import java.util.ArrayList;
 import javax.swing.*;
 import java.awt.*;
 
 public class MainFrame extends javax.swing.JFrame {
     
-    /**
-     * Creates new form MainFrame
-     */
-    public MainFrame(String username,  ArrayList<Car> carList) {
+    public MainFrame(String username, ArrayList<Car> carList) {
         this.username = username;
         this.carList = carList;
         initComponents();
@@ -31,7 +27,8 @@ public class MainFrame extends javax.swing.JFrame {
         carJList = new javax.swing.JList<>(listModel);
         for (Car car : carList) {
             listModel.addElement(car.getMerek() + " " + car.getModel()); // Menambah nama mobil ke model
-        }  ;
+        }
+        ;
         panelInfo = new javax.swing.JPanel();
         jPanel1 = new javax.swing.JPanel();
         lbImage = new javax.swing.JLabel();
@@ -176,33 +173,33 @@ public class MainFrame extends javax.swing.JFrame {
 
     private void tbDetailActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tbDetailActionPerformed
         // TODO add your handling code here:
-        int index = carJList.getSelectedIndex(); // Mendapatkan indeks yang dipilih  
-            if (index != -1) {  
-                Car selectedCar = carList.get(index); // Ambil mobil yang dipilih  
-                new CarDetailsFrame(selectedCar).setVisible(true); // Buka jendela detail mobil  
-            } else {  
-                JOptionPane.showMessageDialog(this, "Silakan pilih mobil terlebih dahulu.", "Info", JOptionPane.INFORMATION_MESSAGE);  
-            }  
+        int index = carJList.getSelectedIndex(); // mendapatkan indeks yang dipilih  
+        if (index != -1) {  
+            Car selectedCar = carList.get(index); // ambil mobil yang dipilih  
+            new CarDetailsFrame(selectedCar).setVisible(true); // buka tampilan detail mobil 
+        } else {  
+            JOptionPane.showMessageDialog(this, "Silakan pilih mobil terlebih dahulu.", "Info", JOptionPane.INFORMATION_MESSAGE);  
+        }  
     }//GEN-LAST:event_tbDetailActionPerformed
 
     private void carJListValueChanged(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_carJListValueChanged
         // TODO add your handling code here:
-        if (!evt.getValueIsAdjusting()) { // Pastikan pilihan sudah stabil  
-                int index = carJList.getSelectedIndex(); // Mendapatkan indeks yang dipilih  
-                if (index != -1) {  
-                    Car selectedCar = carList.get(index); // Ambil mobil yang dipilih  
-                    displayCarDetails(selectedCar); // Tampilkan informasi detail mobil  
-                }  
-            }   
+        if (!evt.getValueIsAdjusting()) { // memastikan pilihan tidak berubah
+            int index = carJList.getSelectedIndex(); // mendapatkan indeks yang dipilih  
+            if (index != -1) {  
+                Car selectedCar = carList.get(index); // ambil mobil yang dipilih  
+                displayCarDetails(selectedCar); // tampilkan informasi detail mobil  
+            }  
+        }   
     }//GEN-LAST:event_carJListValueChanged
 
     private void displayCarDetails(Car car) {  
-        // Menampilkan gambar  
+        // menampilkan gambar  
         ImageIcon imageIcon = new ImageIcon(car.getImagePath());  
-        Image image = imageIcon.getImage().getScaledInstance(320, 200, Image.SCALE_SMOOTH); // Mengubah ukuran gambar  
-        lbImage.setIcon(new ImageIcon(image)); // Menampilkan gambar mobil  
+        Image image = imageIcon.getImage().getScaledInstance(320, 200, Image.SCALE_SMOOTH); // mengubah ukuran gambar  
+        lbImage.setIcon(new ImageIcon(image)); // menampilkan gambar mobil  
 
-        // Menampilkan harga, merek dan model  
+        // menampilkan harga, merek dan model  
         lbHarga.setText("Rp" + car.getHarga());  
         lbNama.setText(car.getMerek() + " " + car.getModel());  
     }  
@@ -220,8 +217,8 @@ public class MainFrame extends javax.swing.JFrame {
     private javax.swing.JButton tbKeluar;
     private javax.swing.JButton tbTambahMobil;
     // End of variables declaration//GEN-END:variables
-    static String username;
-    ArrayList<Car> carList;
-    javax.swing.DefaultListModel<String> listModel;
+    private final String username;
+    private final ArrayList<Car> carList;
+    private DefaultListModel<String> listModel;
 }
 
