@@ -35,19 +35,7 @@ public class LoginFrame extends javax.swing.JFrame {
 
         lbLogin3.setText("Nama Pengguna");
 
-        tfUsername.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                tfUsernameActionPerformed(evt);
-            }
-        });
-
         lbLogin4.setText("Kata Sandi");
-
-        pfPassword.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                pfPasswordActionPerformed(evt);
-            }
-        });
 
         tbDaftar.setText("Belum punya akun? Klik disini!");
         tbDaftar.addActionListener(new java.awt.event.ActionListener() {
@@ -115,11 +103,8 @@ public class LoginFrame extends javax.swing.JFrame {
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
-
-    private void tfUsernameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tfUsernameActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_tfUsernameActionPerformed
 
     private void tbDaftarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tbDaftarActionPerformed
         // TODO add your handling code here:
@@ -135,15 +120,11 @@ public class LoginFrame extends javax.swing.JFrame {
     private void chbShowPassActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chbShowPassActionPerformed
         // TODO add your handling code here:
         if (pfPassword.getEchoChar() != '\u0000') {
-            pfPassword.setEchoChar('\u0000');
+            pfPassword.setEchoChar('\u0000'); // menampilkan password
         } else {
-            pfPassword.setEchoChar((Character) UIManager.get("PasswordField.echoChar"));
+            pfPassword.setEchoChar((Character) UIManager.get("PasswordField.echoChar")); // atur pf menjadi ...
         }
     }//GEN-LAST:event_chbShowPassActionPerformed
-
-    private void pfPasswordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pfPasswordActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_pfPasswordActionPerformed
     
     private void loginUser() {  
         String username = tfUsername.getText();  

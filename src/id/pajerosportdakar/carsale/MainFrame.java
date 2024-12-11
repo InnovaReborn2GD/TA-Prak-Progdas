@@ -79,6 +79,7 @@ public class MainFrame extends javax.swing.JFrame {
         lbNama.setText("");
 
         tbDetail.setText("Detail");
+        tbDetail.setEnabled(false);
         tbDetail.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 tbDetailActionPerformed(evt);
@@ -158,6 +159,7 @@ public class MainFrame extends javax.swing.JFrame {
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void tbTambahMobilActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tbTambahMobilActionPerformed
@@ -176,7 +178,8 @@ public class MainFrame extends javax.swing.JFrame {
         int index = carJList.getSelectedIndex(); // mendapatkan indeks yang dipilih  
         if (index != -1) {  
             Car selectedCar = carList.get(index); // ambil mobil yang dipilih  
-            new CarDetailsFrame(selectedCar).setVisible(true); // buka tampilan detail mobil 
+            new CarDetailsFrame(selectedCar, username).setVisible(true); // buka tampilan detail mobil 
+            this.dispose();
         } else {  
             JOptionPane.showMessageDialog(this, "Silakan pilih mobil terlebih dahulu.", "Info", JOptionPane.INFORMATION_MESSAGE);  
         }  
@@ -189,6 +192,7 @@ public class MainFrame extends javax.swing.JFrame {
             if (index != -1) {  
                 Car selectedCar = carList.get(index); // ambil mobil yang dipilih  
                 displayCarDetails(selectedCar); // tampilkan informasi detail mobil  
+                tbDetail.setEnabled(true);
             }  
         }   
     }//GEN-LAST:event_carJListValueChanged

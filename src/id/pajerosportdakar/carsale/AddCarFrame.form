@@ -34,7 +34,7 @@
   </Properties>
   <SyntheticProperties>
     <SyntheticProperty name="formSizePolicy" type="int" value="1"/>
-    <SyntheticProperty name="generateCenter" type="boolean" value="false"/>
+    <SyntheticProperty name="generateCenter" type="boolean" value="true"/>
   </SyntheticProperties>
   <AuxValues>
     <AuxValue name="FormSettings_autoResourcing" type="java.lang.Integer" value="0"/>
@@ -67,9 +67,8 @@
         <DimensionLayout dim="0">
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" attributes="0">
-                  <EmptySpace min="-2" max="-2" attributes="0"/>
+                  <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="panelFormulir" min="-2" max="-2" attributes="0"/>
                       <Group type="102" alignment="1" attributes="0">
                           <Component id="tbAddPict" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
@@ -79,11 +78,15 @@
                           <EmptySpace max="-2" attributes="0"/>
                           <Component id="tbTambahMbl" min="-2" max="-2" attributes="0"/>
                       </Group>
+                      <Group type="102" attributes="0">
+                          <Component id="panelFormulir" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                      </Group>
                   </Group>
-                  <EmptySpace min="-2" max="-2" attributes="0"/>
+                  <EmptySpace max="-2" attributes="0"/>
               </Group>
               <Group type="102" alignment="0" attributes="0">
-                  <EmptySpace min="-2" pref="266" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="14" max="-2" attributes="0"/>
                   <Component id="lbHeader" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="32767" attributes="0"/>
               </Group>
@@ -112,7 +115,7 @@
         <Component class="javax.swing.JLabel" name="lbHeader">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Segoe UI" size="24" style="1"/>
+              <Font name="Segoe UI" size="24" style="0"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Tambah Mobil"/>
             <Property name="autoscrolls" type="boolean" value="true"/>
@@ -293,9 +296,6 @@
               </Properties>
             </Component>
             <Component class="javax.swing.JTextField" name="tfMerek">
-              <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="tfMerekActionPerformed"/>
-              </Events>
             </Component>
             <Component class="javax.swing.JLabel" name="lbModel">
               <Properties>
@@ -315,9 +315,6 @@
               </Properties>
             </Component>
             <Component class="javax.swing.JTextField" name="tfTahunModel">
-              <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="tfTahunModelActionPerformed"/>
-              </Events>
             </Component>
             <Component class="javax.swing.JLabel" name="lbOdometer">
               <Properties>
@@ -327,21 +324,19 @@
             <Component class="javax.swing.JComboBox" name="cbOdometer">
               <Properties>
                 <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-                  <StringArray count="8">
-                    <StringItem index="0" value="&lt; 5.000 km"/>
-                    <StringItem index="1" value="5.001 - 10.000 km"/>
-                    <StringItem index="2" value="10.001 - 20.000 km"/>
-                    <StringItem index="3" value="20.001 - 40.000 km"/>
-                    <StringItem index="4" value="40.001 - 80.000 km"/>
-                    <StringItem index="5" value="80.000 - 100.000 km"/>
-                    <StringItem index="6" value="100.000 - 200.000 km"/>
-                    <StringItem index="7" value="&gt; 200.000 km"/>
+                  <StringArray count="9">
+                    <StringItem index="0" value="&lt;pilih odometer&gt;"/>
+                    <StringItem index="1" value="&lt; 5.000 km"/>
+                    <StringItem index="2" value="5.001 - 10.000 km"/>
+                    <StringItem index="3" value="10.001 - 20.000 km"/>
+                    <StringItem index="4" value="20.001 - 40.000 km"/>
+                    <StringItem index="5" value="40.001 - 80.000 km"/>
+                    <StringItem index="6" value="80.000 - 100.000 km"/>
+                    <StringItem index="7" value="100.000 - 200.000 km"/>
+                    <StringItem index="8" value="&gt; 200.000 km"/>
                   </StringArray>
                 </Property>
               </Properties>
-              <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="cbOdometerActionPerformed"/>
-              </Events>
               <AuxValues>
                 <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
               </AuxValues>
@@ -352,18 +347,16 @@
               </Properties>
             </Component>
             <Component class="javax.swing.JTextField" name="tfLokasi">
-              <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="tfLokasiActionPerformed"/>
-              </Events>
             </Component>
             <Component class="javax.swing.JComboBox" name="cbJenisBBM">
               <Properties>
                 <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-                  <StringArray count="4">
-                    <StringItem index="0" value="Bensin"/>
-                    <StringItem index="1" value="Diesel"/>
-                    <StringItem index="2" value="Hybrid"/>
-                    <StringItem index="3" value="Listrik"/>
+                  <StringArray count="5">
+                    <StringItem index="0" value="&lt;pilih BBM&gt;"/>
+                    <StringItem index="1" value="Bensin"/>
+                    <StringItem index="2" value="Diesel"/>
+                    <StringItem index="3" value="Hybrid"/>
+                    <StringItem index="4" value="Listrik"/>
                   </StringArray>
                 </Property>
               </Properties>
@@ -384,23 +377,18 @@
             <Component class="javax.swing.JComboBox" name="cbTransmisi">
               <Properties>
                 <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-                  <StringArray count="2">
-                    <StringItem index="0" value="Manual (MT)"/>
-                    <StringItem index="1" value="Matic (AT)"/>
+                  <StringArray count="3">
+                    <StringItem index="0" value="&lt;pilih transmisi&gt;"/>
+                    <StringItem index="1" value="Manual (MT)"/>
+                    <StringItem index="2" value="Matic (AT)"/>
                   </StringArray>
                 </Property>
               </Properties>
-              <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="cbTransmisiActionPerformed"/>
-              </Events>
               <AuxValues>
                 <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
               </AuxValues>
             </Component>
             <Component class="javax.swing.JTextField" name="tfKubikasi">
-              <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="tfKubikasiActionPerformed"/>
-              </Events>
             </Component>
             <Component class="javax.swing.JLabel" name="lbKubikasi">
               <Properties>
@@ -418,9 +406,6 @@
               </Properties>
             </Component>
             <Component class="javax.swing.JTextField" name="tfHarga">
-              <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="tfHargaActionPerformed"/>
-              </Events>
             </Component>
             <Component class="javax.swing.JLabel" name="lbRupiah">
               <Properties>
@@ -440,9 +425,6 @@
                 </Property>
                 <Property name="toolTipText" type="java.lang.String" value="tidak usah menuliskan angka nol"/>
               </Properties>
-              <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="tfNoTelActionPerformed"/>
-              </Events>
               <AuxValues>
                 <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new javax.swing.JTextField(getNomorPenjual(username))"/>
               </AuxValues>
@@ -559,6 +541,7 @@
         <Component class="javax.swing.JButton" name="tbRemovePict">
           <Properties>
             <Property name="text" type="java.lang.String" value="Hapus Gambar"/>
+            <Property name="enabled" type="boolean" value="false"/>
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="tbRemovePictActionPerformed"/>

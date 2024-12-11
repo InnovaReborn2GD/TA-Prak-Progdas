@@ -81,7 +81,7 @@ public class AddCarFrame extends javax.swing.JFrame {
         setTitle("Tambah Mobil Baru");
         setSize(new java.awt.Dimension(600, 630));
 
-        lbHeader.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        lbHeader.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         lbHeader.setText("Tambah Mobil");
         lbHeader.setAutoscrolls(true);
         lbHeader.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
@@ -90,59 +90,25 @@ public class AddCarFrame extends javax.swing.JFrame {
 
         lbMerek.setText("Merek");
 
-        tfMerek.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                tfMerekActionPerformed(evt);
-            }
-        });
-
         lbModel.setText("Model");
 
         tfModel.setMaximumSize(new java.awt.Dimension(68, 26));
 
         lbTahunModel.setText("Tahun Model");
 
-        tfTahunModel.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                tfTahunModelActionPerformed(evt);
-            }
-        });
-
         lbOdometer.setText("Odometer");
 
-        cbOdometer.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "< 5.000 km", "5.001 - 10.000 km", "10.001 - 20.000 km", "20.001 - 40.000 km", "40.001 - 80.000 km", "80.000 - 100.000 km", "100.000 - 200.000 km", "> 200.000 km" }));
-        cbOdometer.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cbOdometerActionPerformed(evt);
-            }
-        });
+        cbOdometer.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "<pilih odometer>", "< 5.000 km", "5.001 - 10.000 km", "10.001 - 20.000 km", "20.001 - 40.000 km", "40.001 - 80.000 km", "80.000 - 100.000 km", "100.000 - 200.000 km", "> 200.000 km" }));
 
         lbLokasi.setText("Lokasi");
 
-        tfLokasi.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                tfLokasiActionPerformed(evt);
-            }
-        });
-
-        cbJenisBBM.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Bensin", "Diesel", "Hybrid", "Listrik" }));
+        cbJenisBBM.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "<pilih BBM>", "Bensin", "Diesel", "Hybrid", "Listrik" }));
 
         lbJenisBBM.setText("Jenis BBM");
 
         lbTransmisi.setText("Transmisi");
 
-        cbTransmisi.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Manual (MT)", "Matic (AT)" }));
-        cbTransmisi.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cbTransmisiActionPerformed(evt);
-            }
-        });
-
-        tfKubikasi.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                tfKubikasiActionPerformed(evt);
-            }
-        });
+        cbTransmisi.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "<pilih transmisi>", "Manual (MT)", "Matic (AT)" }));
 
         lbKubikasi.setText("Kubikasi Mesin");
 
@@ -150,23 +116,12 @@ public class AddCarFrame extends javax.swing.JFrame {
 
         lbHarga.setText("Harga");
 
-        tfHarga.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                tfHargaActionPerformed(evt);
-            }
-        });
-
         lbRupiah.setText("Rp");
 
         lbNoTel.setText("Nomor Telepon (untuk CP)");
 
         tfNoTel.setEditable(false);
         tfNoTel.setToolTipText("tidak usah menuliskan angka nol");
-        tfNoTel.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                tfNoTelActionPerformed(evt);
-            }
-        });
 
         lbKodeTel.setText("+62");
 
@@ -358,6 +313,7 @@ public class AddCarFrame extends javax.swing.JFrame {
         });
 
         tbRemovePict.setText("Hapus Gambar");
+        tbRemovePict.setEnabled(false);
         tbRemovePict.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 tbRemovePictActionPerformed(evt);
@@ -371,7 +327,6 @@ public class AddCarFrame extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(panelFormulir, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                         .addComponent(tbAddPict)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -379,10 +334,13 @@ public class AddCarFrame extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(tbBatal)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(tbTambahMbl)))
+                        .addComponent(tbTambahMbl))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(panelFormulir, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(266, 266, 266)
+                .addGap(14, 14, 14)
                 .addComponent(lbHeader)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -414,37 +372,31 @@ public class AddCarFrame extends javax.swing.JFrame {
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
-
-    private void tfMerekActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tfMerekActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_tfMerekActionPerformed
 
     private void tbTambahMblActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tbTambahMblActionPerformed
         // TODO add your handling code here:
         registerCar();
     }//GEN-LAST:event_tbTambahMblActionPerformed
-        
-    private void cbOdometerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbOdometerActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_cbOdometerActionPerformed
 
     private void tbBatalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tbBatalActionPerformed
         // TODO add your handling code here:
-        int a = JOptionPane.showConfirmDialog(this, "Apakah anda yakin ingin membatalkan? \nData yang anda masukkan akan hilang!", "Konfirmasi Batal", JOptionPane.YES_NO_OPTION, JOptionPane.WARNING_MESSAGE);
-        if (a == JOptionPane.YES_OPTION) {
+        Object[] options = {"Iya, batalin", "Jangan dulu"};
+        int a = JOptionPane.showOptionDialog(this, 
+                "Apakah anda yakin ingin membatalkan? \nData yang anda masukkan akan hilang!", 
+                "Konfirmasi Batal", 
+                JOptionPane.YES_NO_OPTION, 
+                JOptionPane.WARNING_MESSAGE, 
+                null, 
+                options,
+                options[1]);
+        
+        if (a == 0) { // jika pengguna memilih ya
             new MainFrame(username, Main.carList).setVisible(true);
             this.dispose();
         }
     }//GEN-LAST:event_tbBatalActionPerformed
-
-    private void tfTahunModelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tfTahunModelActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_tfTahunModelActionPerformed
-
-    private void tfLokasiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tfLokasiActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_tfLokasiActionPerformed
 
     private void tbAddPictActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tbAddPictActionPerformed
         // TODO add your handling code here:
@@ -466,32 +418,19 @@ public class AddCarFrame extends javax.swing.JFrame {
             ImageIcon imageIco = new ImageIcon(imagePath);
             Image image = imageIco.getImage().getScaledInstance(370, 260, Image.SCALE_SMOOTH);
             lbImage.setIcon(new ImageIcon(image)); // tampilkan gambar
+            tbRemovePict.setEnabled(true);
+            tbAddPict.setEnabled(false);
         }
     }//GEN-LAST:event_tbAddPictActionPerformed
     
-    private void tfKubikasiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tfKubikasiActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_tfKubikasiActionPerformed
-
-    private void tfHargaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tfHargaActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_tfHargaActionPerformed
-
     private void tbRemovePictActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tbRemovePictActionPerformed
         // TODO add your handling code here:
-        String imagePath = tfImagePath.getText();
-        if (lbImage == null || imagePath.equals("-")) {
-            JOptionPane.showMessageDialog(this, "Tidak ada gambar yang ditampilkan.", "Info", JOptionPane.INFORMATION_MESSAGE);
-        } else {
-            lbImage.setIcon(null); // Menghapus gambar dari JLabel
-            tfImagePath.setText("-");
-            JOptionPane.showMessageDialog(this, "Gambar dihapus.", "Info", JOptionPane.INFORMATION_MESSAGE);
-        }
+        lbImage.setIcon(null); // Menghapus gambar dari JLabel
+        tfImagePath.setText("-");
+        JOptionPane.showMessageDialog(this, "Gambar dihapus.", "Info", JOptionPane.INFORMATION_MESSAGE);
+        tbRemovePict.setEnabled(false);
+        tbAddPict.setEnabled(true);
     }//GEN-LAST:event_tbRemovePictActionPerformed
-
-    private void tfNoTelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tfNoTelActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_tfNoTelActionPerformed
 
     private void chbUseCurrentTelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chbUseCurrentTelActionPerformed
         // TODO add your handling code here:
@@ -502,10 +441,6 @@ public class AddCarFrame extends javax.swing.JFrame {
             tfNoTel.setText(getNomorPenjual(username)); // autofill nomor penjual sesuai nomor user yang login
         }
     }//GEN-LAST:event_chbUseCurrentTelActionPerformed
-
-    private void cbTransmisiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbTransmisiActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_cbTransmisiActionPerformed
     
     private void registerCar() {
         // deklarasi variabel data mobil yang didapatkan dari pengisian
@@ -524,18 +459,28 @@ public class AddCarFrame extends javax.swing.JFrame {
         String deskripsi = taDeskripsi.getText();
         String imagePath = tfImagePath.getText();
         
-        int a = JOptionPane.showConfirmDialog(this, "Apakah anda yakin ingin menanbahkan mobil ini?\nSetelah anda klik Yes, anda tidak dapat mengubahnya kembali!", "Konfirmasi Penambahan", JOptionPane.YES_NO_OPTION, JOptionPane.WARNING_MESSAGE);
-        if (a == JOptionPane.YES_OPTION) { // jika pengguna memilih pilihan ya
-            if (merek.isEmpty() || model.isEmpty() || tahun.isEmpty() || harga.isEmpty() || kubikasi.isEmpty() || warna.isEmpty() || lokasi.isEmpty() || nomorPenjual.isEmpty() || namaPenjual.isEmpty() || deskripsi.isEmpty() || imagePath.equals("-")) {
-                JOptionPane.showMessageDialog(this, "Tidak dapat menambahkan mobil. \nData kosong atau tidak sah. Mohon periksa kembali data yang anda masukkan.", "Galat", JOptionPane.ERROR_MESSAGE);
-                return;
+        if (merek.isEmpty() || model.isEmpty() || tahun.isEmpty() || odometer.equals("<pilih odometer>") || jenisBBM.equals("<pilih BBM>") || jenisGearbox.equals("<pilih transmisi>") ||harga.isEmpty() || kubikasi.isEmpty() || warna.isEmpty() || lokasi.isEmpty() || nomorPenjual.isEmpty() || namaPenjual.isEmpty() || deskripsi.isEmpty() || lbImage == null || imagePath.equals("-")) {
+            JOptionPane.showMessageDialog(this, "Tidak dapat menambahkan mobil. \nData kosong atau tidak sah. Mohon periksa kembali data yang anda masukkan.", "Galat", JOptionPane.ERROR_MESSAGE);
+            return;
             }
             
-            if (!User.validateNomor(nomorPenjual)) {
-                JOptionPane.showMessageDialog(this, "Nomor telepon tidak sah. \nNomor telepon harus berupa angka, terdiri dari setidaknya 6-15 digit, dan berawalan '8'." , "Galat", JOptionPane.ERROR_MESSAGE);
-                return;
+        if (!User.validateNomor(nomorPenjual)) {
+            JOptionPane.showMessageDialog(this, "Nomor telepon tidak sah. \nNomor telepon harus berupa angka, terdiri dari setidaknya 6-15 digit, dan berawalan '8'." , "Galat", JOptionPane.ERROR_MESSAGE);
+            return;
             }
             
+        
+        Object[] options = {"Iya, tambahin", "Entar dulu dehh.."};
+        int a = JOptionPane.showOptionDialog(this, 
+                "Apakah anda yakin ingin menambahkan mobil ini?\nSetelah anda klik Ya, anda tidak dapat mengubahnya kembali!", 
+                "Konfirmasi Penambahan", 
+                JOptionPane.YES_NO_OPTION, 
+                JOptionPane.WARNING_MESSAGE, 
+                null, 
+                options, 
+                options[0]);
+        
+        if (a == 0) { // jika pengguna memilih pilihan ya
             Car newCar = new Car(merek, model, tahun, harga, deskripsi, odometer, jenisBBM, jenisGearbox, kubikasi, warna, lokasi, nomorPenjual, namaPenjual, imagePath);
             carList.add(newCar); // menambahkan data mobil baru ke ArrayList carList
             JOptionPane.showMessageDialog(this, "Mobil berhasil ditambahkan", "Tambah Mobil", JOptionPane.INFORMATION_MESSAGE);

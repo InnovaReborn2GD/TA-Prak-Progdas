@@ -1,6 +1,0 @@
-ambatukam,Ambatuk4m*,1111
-kominfo@go.id,Admin*12345,8111587078
-user,admin,0
-athar,Admin*12345,83151211050
-FarhanKebab,AkuGanteng123*,812345678
-Budiono Siregar,Admin*12345,8111578078

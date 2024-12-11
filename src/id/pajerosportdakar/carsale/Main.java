@@ -1,6 +1,5 @@
 package id.pajerosportdakar.carsale;
-import com.formdev.flatlaf.FlatLaf;
-import com.formdev.flatlaf.themes.FlatMacDarkLaf;
+import com.formdev.flatlaf.themes.*;
 import java.io.*;
 import javax.swing.*;  
 import java.util.ArrayList;  
@@ -11,18 +10,11 @@ public class Main {
     
     public static void main(String[] args) {  
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        try {  
-            FlatLaf.setup(new FlatMacDarkLaf());   
-            System.out.println("FlatLaf Look and Feel set successfully!");  
-        } catch (Exception e) {  
-            e.printStackTrace();  
-        }  
+        FlatMacDarkLaf.setup();
         //</editor-fold> 
         loadData();
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new LoginFrame(userList).setVisible(true); 
-            }
+        java.awt.EventQueue.invokeLater(() -> {
+            new LoginFrame(userList).setVisible(true);
         });  
     }
     

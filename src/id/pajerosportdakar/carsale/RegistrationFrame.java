@@ -142,6 +142,7 @@ public class RegistrationFrame extends JFrame {
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void tbRegisterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tbRegisterActionPerformed
@@ -151,10 +152,29 @@ public class RegistrationFrame extends JFrame {
 
     private void tbLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tbLoginActionPerformed
         // TODO add your handling code here:
-        int a = JOptionPane.showConfirmDialog(this, "Apakah kamu yakin ingin batal pendaftaran?\nData yang kamu masukkan bakal ilang!", "Registrasi", JOptionPane.YES_NO_OPTION, JOptionPane.WARNING_MESSAGE);
-        if (a == JOptionPane.YES_OPTION) {
-            new LoginFrame(userList).setVisible(true);
-            this.dispose();
+        Object[] options = {"Iya, mau login aja", "Lanjut daftar"}; // custom button text
+        
+        // tampilkan dialog konfirmasi batal jika user ingin batal daftar dan salah satu field sudah terisi
+        if (!tfUsername.getText().isEmpty() || pfPass.getPassword().length > 0 || !tfNomorTel.getText().isEmpty()) {
+            int a = JOptionPane.showOptionDialog(this, 
+                    "Apakah kamu yakin ingin batal pendaftaran?\nData yang kamu masukkan bakal ilang!", 
+                    "Registrasi", 
+                    JOptionPane.YES_NO_OPTION, 
+                    JOptionPane.WARNING_MESSAGE,
+                    null,
+                    options,
+                    options[0]); // atur pilihan default ke ya
+            
+            if (a == 0) { // jika pengguna memilih ya
+                new LoginFrame(userList).setVisible(true);
+                this.dispose();
+            }
+        } 
+        
+        // langsung masuk ke tampilan login tanpa konfirmasi jika field kosong
+        else {  
+        new LoginFrame(userList).setVisible(true);  
+        this.dispose();
         }
     }//GEN-LAST:event_tbLoginActionPerformed
 
@@ -186,26 +206,29 @@ public class RegistrationFrame extends JFrame {
         } 
         
         if (!User.validatePwd(password)) {  
-            JOptionPane.showMessageDialog(this, """
-                                                Registrasi Gagal! 
-                                                Kata sandi harus terdiri dari 8-20 karakter, mengandung masing-masing 
-                                                setidaknya satu huruf kecil, huruf besar, angka, dan simbol.""",
-                                                "Galat",
-                                                JOptionPane.ERROR_MESSAGE);  
+            JOptionPane.showMessageDialog(this, 
+                """
+                Registrasi Gagal! 
+                Kata sandi harus terdiri dari 8-20 karakter, mengandung masing-masing 
+                setidaknya satu huruf kecil, huruf besar, angka, dan simbol.""",
+                "Galat",
+                JOptionPane.ERROR_MESSAGE);  
             return;  
         }  
 
         if (!User.validateNomor(phone)) {
-            JOptionPane.showMessageDialog(this, """
-                                                Registrasi Gagal! 
-                                                Nomor telepon harus berupa angka, terdiri dari setidaknya 6-15 digit, dan berawalan '8'.""", 
-                                                "Galat", 
-                                                JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(this, 
+                """
+                Registrasi Gagal! 
+                Nomor telepon harus berupa angka, terdiri dari setidaknya 8-15 digit, dan berawalan '8'.""", 
+                "Galat", 
+                JOptionPane.ERROR_MESSAGE);
             return;
         } 
         
-        userList.add(new User(username, password, phone));  
-        Main.saveData();
+        User newUser = new User(username, password, phone);
+        userList.add(newUser); // tambah pengguna baru ke arraylist
+        Main.saveUserData(); // menyimpan data pengguna baru ke usersDb.txt
         JOptionPane.showMessageDialog(this, "Registrasi Sukses", "Registrasi", JOptionPane.INFORMATION_MESSAGE);  
         new LoginFrame(userList).setVisible(true);
         this.dispose();

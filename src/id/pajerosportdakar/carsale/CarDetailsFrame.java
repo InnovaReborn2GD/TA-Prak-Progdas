@@ -1,13 +1,15 @@
 package id.pajerosportdakar.carsale;
 import javax.swing.*;
 import java.awt.*;
-import java.net.URI;
+import java.io.*;
+import java.net.*;
 
 public class CarDetailsFrame extends javax.swing.JFrame {
-    private Car car;
+    private final Car car;
     
-    public CarDetailsFrame(Car car) {
+    public CarDetailsFrame(Car car, String username) {
         this.car = car;
+        this.username = username;
         initComponents();
     }
 
@@ -20,7 +22,7 @@ public class CarDetailsFrame extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel1 = new javax.swing.JLabel();
+        lbHeading = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
         lbImage = new javax.swing.JLabel();
@@ -28,37 +30,38 @@ public class CarDetailsFrame extends javax.swing.JFrame {
         Image image = imageIcon.getImage().getScaledInstance(310, 200, Image.SCALE_SMOOTH);
         lbImage.setIcon(new ImageIcon(image));
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTextArea1 = new javax.swing.JTextArea();
-        jLabel2 = new javax.swing.JLabel();
+        taDeskripsi = new javax.swing.JTextArea();
+        lbDeskripsi = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
         lbGetHarga = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
+        lbMerek = new javax.swing.JLabel();
         lbGetMerek = new javax.swing.JLabel();
-        jLabel6 = new javax.swing.JLabel();
+        lbModel = new javax.swing.JLabel();
         lbGetModel = new javax.swing.JLabel();
-        jLabel8 = new javax.swing.JLabel();
+        lbTahun = new javax.swing.JLabel();
         lbGetTahun = new javax.swing.JLabel();
         lbGetOdo = new javax.swing.JLabel();
-        jLabel11 = new javax.swing.JLabel();
-        jLabel12 = new javax.swing.JLabel();
+        lbOdometer = new javax.swing.JLabel();
+        lbJenisBBM = new javax.swing.JLabel();
         lbGetBBM = new javax.swing.JLabel();
         lbGetLokasi = new javax.swing.JLabel();
-        jLabel15 = new javax.swing.JLabel();
+        lbTransmisi = new javax.swing.JLabel();
         lbGetGearbox = new javax.swing.JLabel();
-        jLabel17 = new javax.swing.JLabel();
+        lbWarna = new javax.swing.JLabel();
         lbGetWarna = new javax.swing.JLabel();
-        jLabel19 = new javax.swing.JLabel();
+        lbNamaPenjual = new javax.swing.JLabel();
         lbGetPenjual = new javax.swing.JLabel();
-        jLabel7 = new javax.swing.JLabel();
+        lbKubikasi = new javax.swing.JLabel();
         lbGetKubikasi = new javax.swing.JLabel();
         tbKembali = new javax.swing.JButton();
         tbBeli = new javax.swing.JButton();
+        tbHapusMobil = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Informasi Kendaraan");
 
-        jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
-        jLabel1.setText("Info Kendaraan");
+        lbHeading.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        lbHeading.setText("Info Kendaraan");
 
         jPanel1.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
@@ -75,33 +78,33 @@ public class CarDetailsFrame extends javax.swing.JFrame {
             .addComponent(lbImage, javax.swing.GroupLayout.DEFAULT_SIZE, 207, Short.MAX_VALUE)
         );
 
-        jTextArea1.setEditable(false);
-        jTextArea1.setColumns(20);
-        jTextArea1.setRows(5);
-        jTextArea1.setText(car.getDeskripsi());
-        jScrollPane1.setViewportView(jTextArea1);
+        taDeskripsi.setEditable(false);
+        taDeskripsi.setColumns(20);
+        taDeskripsi.setRows(5);
+        taDeskripsi.setText(car.getDeskripsi());
+        jScrollPane1.setViewportView(taDeskripsi);
 
-        jLabel2.setText("Deskripsi:");
+        lbDeskripsi.setText("Deskripsi:");
 
         jPanel3.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
         lbGetHarga.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         lbGetHarga.setText("Rp" + car.getHarga());
 
-        jLabel4.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jLabel4.setText("Merek");
+        lbMerek.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        lbMerek.setText("Merek");
 
         lbGetMerek.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         lbGetMerek.setText(car.getMerek());
 
-        jLabel6.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jLabel6.setText("Model");
+        lbModel.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        lbModel.setText("Model");
 
         lbGetModel.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         lbGetModel.setText(car.getModel());
 
-        jLabel8.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jLabel8.setText("Tahun");
+        lbTahun.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        lbTahun.setText("Tahun");
 
         lbGetTahun.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         lbGetTahun.setText(car.getTahun());
@@ -109,11 +112,11 @@ public class CarDetailsFrame extends javax.swing.JFrame {
         lbGetOdo.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         lbGetOdo.setText(car.getOdometer());
 
-        jLabel11.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jLabel11.setText("Odometer");
+        lbOdometer.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        lbOdometer.setText("Odometer");
 
-        jLabel12.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jLabel12.setText("Jenis BBM");
+        lbJenisBBM.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        lbJenisBBM.setText("Jenis BBM");
 
         lbGetBBM.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         lbGetBBM.setText(car.getJenisBBM());
@@ -121,26 +124,26 @@ public class CarDetailsFrame extends javax.swing.JFrame {
         lbGetLokasi.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         lbGetLokasi.setText("Lokasi: "  + car.getLokasi());
 
-        jLabel15.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jLabel15.setText("Transmisi");
+        lbTransmisi.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        lbTransmisi.setText("Transmisi");
 
         lbGetGearbox.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         lbGetGearbox.setText(car.getJenisGearbox());
 
-        jLabel17.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jLabel17.setText("Warna");
+        lbWarna.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        lbWarna.setText("Warna");
 
         lbGetWarna.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         lbGetWarna.setText(car.getWarna());
 
-        jLabel19.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jLabel19.setText("Dijual oleh");
+        lbNamaPenjual.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        lbNamaPenjual.setText("Dijual oleh");
 
         lbGetPenjual.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         lbGetPenjual.setText(car.getNamaPenjual());
 
-        jLabel7.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jLabel7.setText("Kubikasi");
+        lbKubikasi.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        lbKubikasi.setText("Kubikasi");
 
         lbGetKubikasi.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         lbGetKubikasi.setText(car.getKubikasi() + " cc");
@@ -154,24 +157,24 @@ public class CarDetailsFrame extends javax.swing.JFrame {
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(lbGetHarga, javax.swing.GroupLayout.PREFERRED_SIZE, 206, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lbGetLokasi, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel19, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lbNamaPenjual, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lbGetPenjual)
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lbModel, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lbMerek, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                                 .addComponent(lbGetTahun, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jLabel8, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                            .addComponent(jLabel17, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(lbTahun, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addComponent(lbWarna, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lbJenisBBM, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(lbGetBBM, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(lbGetWarna))
                         .addGap(26, 26, 26)
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jLabel15, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lbTransmisi, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lbKubikasi, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lbOdometer, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(lbGetOdo, javax.swing.GroupLayout.DEFAULT_SIZE, 170, Short.MAX_VALUE)
                             .addComponent(lbGetGearbox, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(lbGetKubikasi, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
@@ -188,45 +191,45 @@ public class CarDetailsFrame extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(lbGetLokasi)
                 .addGap(9, 9, 9)
-                .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(lbMerek, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(lbGetMerek)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel6)
+                .addComponent(lbModel)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(lbGetModel)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addComponent(jLabel8)
+                        .addComponent(lbTahun)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(lbGetTahun))
                     .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addComponent(jLabel11)
+                        .addComponent(lbOdometer)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(lbGetOdo)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addComponent(jLabel12)
+                        .addComponent(lbJenisBBM)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(lbGetBBM))
                     .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addComponent(jLabel15)
+                        .addComponent(lbTransmisi)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(lbGetGearbox)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addComponent(jLabel17)
+                        .addComponent(lbWarna)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(lbGetWarna))
                     .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addComponent(jLabel7)
+                        .addComponent(lbKubikasi)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(lbGetKubikasi)))
                 .addGap(18, 18, 18)
-                .addComponent(jLabel19)
+                .addComponent(lbNamaPenjual)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(lbGetPenjual)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -239,7 +242,7 @@ public class CarDetailsFrame extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addGap(15, 15, 15)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lbDeskripsi, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 322, Short.MAX_VALUE)
                     .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -255,7 +258,7 @@ public class CarDetailsFrame extends javax.swing.JFrame {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jLabel2)
+                        .addComponent(lbDeskripsi)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 192, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(21, 21, 21))
@@ -275,6 +278,13 @@ public class CarDetailsFrame extends javax.swing.JFrame {
             }
         });
 
+        tbHapusMobil.setText("Hapus Mobil");
+        tbHapusMobil.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                tbHapusMobilActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -285,76 +295,119 @@ public class CarDetailsFrame extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(tbKembali)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(tbHapusMobil)
+                        .addGap(18, 18, 18)
                         .addComponent(tbBeli))
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 177, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(lbHeading, javax.swing.GroupLayout.PREFERRED_SIZE, 177, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(8, Short.MAX_VALUE))
+                .addContainerGap(16, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(9, 9, 9)
-                .addComponent(jLabel1)
+                .addComponent(lbHeading)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 452, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(tbKembali)
-                    .addComponent(tbBeli))
+                    .addComponent(tbBeli)
+                    .addComponent(tbHapusMobil))
                 .addGap(17, 17, 17))
         );
 
+        if (username.equals(car.getNamaPenjual())) {
+            tbHapusMobil.setVisible(true);
+        } else {
+            tbHapusMobil.setVisible(false);
+        }
+
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void tbKembaliActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tbKembaliActionPerformed
         // TODO add your handling code here:
+        new MainFrame(username, Main.carList).setVisible(true);
         this.dispose();
     }//GEN-LAST:event_tbKembaliActionPerformed
 
     private void tbBeliActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tbBeliActionPerformed
         // TODO add your handling code here:
+        if (car.getNamaPenjual().equals(username)) {
+            JOptionPane.showMessageDialog(this, "Kamu tidak bisa membeli mobil yang kamu jual!", "Beli Mobil", JOptionPane.INFORMATION_MESSAGE);
+            return;
+        }
+        
         Object[] options = {"Hubungi", "Batal"}; // array utk custom button text
-        int a = JOptionPane.showOptionDialog(this, "Untuk membeli mobil ini, kamu bisa menghubungi penjual." + "\nNomor Penjual: +62" + car.getNomorPenjual() + "\nKamu akan dialihkan ke halaman web baru (WhatsApp)", 
+        int a = JOptionPane.showOptionDialog(this, """
+                Untuk membeli mobil ini, kamu bisa menghubungi penjual.
+                Nomor Penjual: +62""" + car.getNomorPenjual() + "\nKamu akan dialihkan ke halaman web baru (WhatsApp)", 
                 "Beli Mobil", 
                 JOptionPane.YES_NO_OPTION, 
                 JOptionPane.QUESTION_MESSAGE, 
                 null, 
                 options, // custom option button text
                 options[0]); // atur pilihan default ke 0 (pilihan ya/hubungi)
-        if (a == 0) {
+        
+        if (a == 0) { // jika pengguna memilih hubungi
             openWebPage("https://wa.me/62" + car.getNomorPenjual()); // buka wa sesuai nomor penjual (misal: wa.me/62 + 811xxx)
         }
     }//GEN-LAST:event_tbBeliActionPerformed
+
+    private void tbHapusMobilActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tbHapusMobilActionPerformed
+        // TODO add your handling code here:
+        int index = Main.carList.indexOf(car);
+        String namaPenjual = car.getNamaPenjual();
+        String currentUser = username;
+        
+        Object[] options = {"Hapus", "Tidak"};
+        String msg = "<html>" +
+                     "<p>Apakah kamu yakin ingin menghapus mobil ini dari daftar?</p>" +
+                     "<p><b>PERINGATAN:</b> Tindakan ini <b><u>bersifat permanen dan tidak dapat diurungkan!</b></u></p>" +
+                     "</html>";
+        
+        int pilihan = JOptionPane.showOptionDialog(this, 
+                msg,
+                "Konfirmasi Penghapusan Mobil",
+                JOptionPane.YES_NO_OPTION,
+                JOptionPane.WARNING_MESSAGE,
+                null,
+                options,
+                options[1]);
+        
+        if (pilihan == 0) {
+            if (index != -1) {
+                if (namaPenjual.equals(currentUser)) {
+                    Main.carList.remove(index);
+                    Main.saveCarData();
+                    JOptionPane.showMessageDialog(this, "Mobil berhasil dihapus.", "Info", JOptionPane.INFORMATION_MESSAGE);
+                    new MainFrame(username, Main.carList).setVisible(true);
+                    this.dispose();
+                } else {  
+                    JOptionPane.showMessageDialog(this, "Tidak bisa menghapus mobil. \nIni bukan mobilmu le, jangan lah memutus rejeki orang", "Galat", JOptionPane.ERROR_MESSAGE);  
+                }  
+            }
+        }
+    }//GEN-LAST:event_tbHapusMobilActionPerformed
     
     private void openWebPage(String urlString) {  
         try { 
             URI uri = new URI(urlString);  
             Desktop.getDesktop().browse(uri); // buka url di browser 
-        } catch (Exception e) {  
-            e.printStackTrace();
-            JOptionPane.showMessageDialog(this, "Tidak dapat membuka halaman web.\n" + e.getMessage(), "Galat", JOptionPane.ERROR_MESSAGE);  
+        } catch (IOException | URISyntaxException e) {  
+            JOptionPane.showMessageDialog(this, "Tidak dapat membuka halaman web.\nAlasan: " + e.getMessage(), "Galat", JOptionPane.ERROR_MESSAGE);  
         }  
     }  
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel11;
-    private javax.swing.JLabel jLabel12;
-    private javax.swing.JLabel jLabel15;
-    private javax.swing.JLabel jLabel17;
-    private javax.swing.JLabel jLabel19;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel8;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTextArea jTextArea1;
+    private javax.swing.JLabel lbDeskripsi;
     private javax.swing.JLabel lbGetBBM;
     private javax.swing.JLabel lbGetGearbox;
     private javax.swing.JLabel lbGetHarga;
@@ -366,8 +419,21 @@ public class CarDetailsFrame extends javax.swing.JFrame {
     private javax.swing.JLabel lbGetPenjual;
     private javax.swing.JLabel lbGetTahun;
     private javax.swing.JLabel lbGetWarna;
+    private javax.swing.JLabel lbHeading;
     private javax.swing.JLabel lbImage;
+    private javax.swing.JLabel lbJenisBBM;
+    private javax.swing.JLabel lbKubikasi;
+    private javax.swing.JLabel lbMerek;
+    private javax.swing.JLabel lbModel;
+    private javax.swing.JLabel lbNamaPenjual;
+    private javax.swing.JLabel lbOdometer;
+    private javax.swing.JLabel lbTahun;
+    private javax.swing.JLabel lbTransmisi;
+    private javax.swing.JLabel lbWarna;
+    private javax.swing.JTextArea taDeskripsi;
     private javax.swing.JButton tbBeli;
+    private javax.swing.JButton tbHapusMobil;
     private javax.swing.JButton tbKembali;
     // End of variables declaration//GEN-END:variables
+    private final String username;
 }
